@@ -15,10 +15,25 @@ import {
   Text,
   Image,
   View,
-  TextInput
+  TextInput,
+  Alert
 } from 'react-native';
 
 export default class InstaSummary extends Component {
+  TestFunction() {
+
+    _onPressButton = () => {
+        let body = {
+          url: "https://www.uml-diagrams.org/sequence-diagrams.html"
+        };
+
+        API.post('checkEmail', qs.stringify(body))
+        .then(response => console.log(response.data.status_code),
+          console.log(response.data);
+        )
+        .catch(err => console.log(err))
+      }
+}
   render() {
 
     return (
@@ -30,11 +45,13 @@ export default class InstaSummary extends Component {
 <FormInput/>
 
         <Button
+        onPress={ this.TestFunction }
         style={{backgroundColor: 'FF0000'}}
         raised
         icon={{name: 'fire', type: 'font-awesome'}}
         title='Show me!'
         backgroundColor='#699510'/>
+
         <Text style={styles.instructions}>
 
         </Text>
